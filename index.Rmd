@@ -1,19 +1,21 @@
 ---
-title: "Untitled"
+title: "Corpus Aresh Hemayat"
 output: 
   flexdashboard::flex_dashboard:
+    storyboard: true
     orientation: columns
     vertical_layout: fill
+    theme: lumen
 ---
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
 ```
 
-Column {data-width=650}
+
 -----------------------------------------------------------------------
 
-### Chart A
+### Chart A1
 
 ```{r}
 
