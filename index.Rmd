@@ -10,6 +10,11 @@ output:
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
+library(tidyverse)
+library(spotifyr)
+library(compmus)
+
+
 ```
 
 
