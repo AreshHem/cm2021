@@ -1,9 +1,11 @@
 ---
-title: "Untitled"
-output: 
+title: "Corpus Aresh Hemayat"
+output: htlm_document
   flexdashboard::flex_dashboard:
+    storyboard: true
     orientation: columns
     vertical_layout: fill
+    theme: plotyly
 ---
 
 ```{r setup, include=FALSE}
