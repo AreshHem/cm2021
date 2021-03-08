@@ -6,6 +6,7 @@ output:
     orientation: columns
     vertical_layout: fill
     theme: lumen
+  
 ---
 
 ```{r setup, include=FALSE}
@@ -18,96 +19,34 @@ library(compmus)
 ```
 
 
------------------------------------------------------------------------
+Analysis {.storyboard}
+=========================================
 
-### Chart A1xx
-
-```{r}
-bebop <-
-  get_playlist_audio_features(
-    "thesoundsofspotify",
-    "55s8gstHcaCyfU47mQgLrB"
-  ) %>%
-  slice(1:30) %>%
-  add_audio_analysis()
-bigband <-
-  get_playlist_audio_features(
-    "thesoundsofspotify",
-    "2cjIvuw4VVOQSeUAZfNiqY"
-  ) %>%
-  slice(1:30) %>%
-  add_audio_analysis()
-jazz <-
-  bebop %>%
-  mutate(genre = "Bebop") %>%
-  bind_rows(bigband %>% mutate(genre = "Big Band"))
-
-```
-
-```{r}
-jazz %>%
-  mutate(
-    sections =
-      map(
-        sections,                                    # sections or segments
-        summarise_at,
-        vars(tempo, loudness, duration),             # features of interest
-        list(section_mean = mean, section_sd = sd)   # aggregation functions
-      )
-  ) %>%
-  unnest(sections) %>%
-  ggplot(
-    aes(
-      x = tempo,
-      y = tempo_section_sd,
-      colour = genre,
-      alpha = loudness
-    )
-  ) +
-  geom_point(aes(size = duration / 60)) +
-  geom_rug() +
-  theme_minimal() +
-  ylim(0, 5) +
-  labs(
-    x = "Mean Tempo (bpm)",
-    y = "SD Tempo",
-    colour = "Genre",
-    size = "Duration (min)",
-    alpha = "Volume (dBFS)"
-  )
-```
-
-```{r}
-jazz %>%
-  mutate(
-    timbre =
-      map(
-        segments,
-        compmus_summarise,
-        timbre,
-        method = "mean"
-      )
-  ) %>%
-  select(genre, timbre) %>%
-  compmus_gather_timbre() %>%
-  ggplot(aes(x = basis, y = value, fill = genre)) +
-  geom_violin() +
-  scale_fill_viridis_d() +
-  labs(x = "Spotify Timbre Coefficients", y = "", fill = "Genre")
-```
-
-Column {data-width=350}
------------------------------------------------------------------------
-
-### Chart B2
+### Frame 1
 
 ```{r}
 
 ```
 
-### Chart C
+***
+hihihah
+hihihah
+hihihah
+hihihah
+hihihah
+hihihah
+hihihah
+hihihah
+hihihah
+hihihah
+
+### Frame 2
 
 ```{r}
-
 ```
 
+Details
+=========================================
+
+Column
+-----------------------------------------
