@@ -7,7 +7,7 @@ output:
     vertical_layout: fill
     theme: lumen
     css: stotel.css
-    logo: /home/stotel/Documents/Scola/2020-2021/semester 2/blok 1/Computational Musicology/css/comp-5.gif
+
     
 ---
 
@@ -33,12 +33,12 @@ Analysis {.storyboard}
 ```
 
 ***
-Hi Welcome to my page! For this corpus i want to look at film composer Ludwig Goransson and see what changes he went trough, troughout hes career. 
+Hi Welcome to my page! For this corpus I want to look at film composer and music producer Ludwig Goransson and see what changes he went trough, throughout his career. I want to focus on his film scores. It would be nice to see if i can find significant changes when 
 
 ### Frame 2
 
-```{r}
-```
+
+
 
 Details
 =========================================
