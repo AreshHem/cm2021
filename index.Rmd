@@ -18,6 +18,7 @@ library(tidyverse)
 library(spotifyr)
 library(compmus)
 library(magick)
+library(unix)
 
 
 ```
@@ -33,7 +34,7 @@ Analysis {.storyboard}
 ```
 
 ***
-Hi Welcome to my page! For this corpus I want to look at film composer and music producer Ludwig Goransson and see what changes he went trough, throughout his career. I want to focus on his film scores. It would be nice to see if i can find significant changes when 
+Hi Welcome to my page! For this corpus I want to look at film composer and music producer Ludwig Goransson and see what changes he went trough, throughout his career. I want to focus on his film scores. It would be nice to see if i can find significant changes when looking at different scores. Also
 
 ### Frame 2
 
