@@ -7,7 +7,7 @@ output:
     vertical_layout: fill
     theme: lumen
     css: stotel.css
-    logo: /home/stotel/Documents/Scola/2020-2021/semester 2/blok 1/Computational Musicology/css/waves.gif
+    logo: /home/stotel/Documents/Scola/2020-2021/semester 2/blok 1/Computational Musicology/css/comp-5.gif
     
 ---
 
@@ -17,6 +17,7 @@ library(flexdashboard)
 library(tidyverse)
 library(spotifyr)
 library(compmus)
+library(magick)
 
 
 ```
@@ -25,23 +26,14 @@ library(compmus)
 Analysis {.storyboard}
 =========================================
 
-### Frame 1
+### Introduction
 
 ```{r}
 
 ```
 
 ***
-hihihah
-hihihah
-hihihah
-hihihah
-hihihah
-hihihah
-hihihah
-hihihah
-hihihah
-hihihah
+Hi Welcome to my page! For this corpus i want to look at film composer Ludwig Goransson and see what changes he went trough, troughout hes career. 
 
 ### Frame 2
 
