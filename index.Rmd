@@ -5,7 +5,7 @@ output:
     storyboard: true
     orientation: columns
     vertical_layout: fill
-    theme: lumen
+    theme: bootstrap
     css: stotel.css
 
     
@@ -19,6 +19,9 @@ library(spotifyr)
 library(compmus)
 library(magick)
 library(unix)
+library(plotly)
+library(RColorBrewer)
+library(ggthemes)
 
 
 ```
@@ -29,7 +32,7 @@ Analysis {.storyboard}
 
 ### Introduction
 
-```{r}
+```{r, include=FALSE}
 fruitvale <- get_playlist_audio_features("", "23n37IlJukKL9pUJyBbSib")
 creed <- get_playlist_audio_features("", "7jA12g7812CnId8erPPhUo")
 everything <- get_playlist_audio_features("", "7AT5LLcwYqISVLfLaaoQQo")
@@ -42,7 +45,7 @@ tenet <- get_playlist_audio_features("", "7EXL4cAtGhd0Qaumzx96rq")
 ```
 
 
-```{r}
+```{r, include=FALSE}
 scores <-
   bind_rows(
     fruitvale %>% mutate(category = "(2013) Fruitvale Station "),
@@ -58,33 +61,26 @@ scores <-
 
 ```
 
-```{r}
-scores <-
+```{r, include=FALSE}
+genres <-
   bind_rows(
-    fruitvale %>% mutate(category = "(2013) Fruitvale Station "),
-    creed %>% mutate(category = "(2015) Creed"),
-    panther %>% mutate(category = "(2017) Black Panther"),
-    wish %>% mutate(category = "(2017) Death Wish "),
-    venom %>% mutate(category = "(2018) Venom"),
-    creed2 %>% mutate(category = "(2018) Creed II"),
-    tenet %>% mutate(category = "(2020) Tenet"),
-    slice %>% mutate(category = "(2018) Slice"),
-    everything %>% mutate(category = "(2017) Everything, Everything")
+   
+      fruitvale %>% mutate(category = "Drama/Romance"),
+    creed %>% mutate(category = "Sport/Drama"),
+    panther %>% mutate(category = "Action"),
+    wish %>% mutate(category = "Action"),
+    venom %>% mutate(category = "Action"),
+    creed2 %>% mutate(category = "Sport/Drama"),
+    tenet %>% mutate(category = "Action"),
+    everything %>% mutate(category = "Drama/Romance")
+
   )
 
 ```
 
 
-```{r}
-scores %>%
-  ggplot(aes(x = loudness)) +
-  geom_histogram(binwidth = 0.1, color= "blue") +
-  facet_wrap(~category)+
-  scale_color_gradient() 
 
-```
-
-```{r}
+```{r, include=FALSE}
 scores %>%
   summarise(
     mean_speechiness = mean(speechiness),
@@ -103,30 +99,17 @@ scores %>%
 
 ```
 
-```{r}
-scores %>%
-  ggplot(aes(x = category, y = speechiness)) +
-  geom_boxplot()
 
-```
 
 ```{r}
-scores %>%
-  ggplot(aes(x = energy)) +
-  geom_histogram(binwidth = 0.1, color= "red",) +
-  facet_wrap(~category)+
-  scale_color_gradient() 
-
-```
-```{r}
-scores %>%                    # Start with awards.
+scatter <-scores %>%                    # Start with awards.
   mutate(
     mode = ifelse(mode == 0, "Minor", "Major")
   ) %>%
   ggplot(                     # Set up the plot.
     aes(
-      x = valence,
-      y = energy,
+      x = acousticness,
+      y = instrumentalness,
       size = loudness,
       colour = mode
     )
@@ -135,16 +118,95 @@ scores %>%                    # Start with awards.
   geom_rug(size = 0.1) +      # Add 'fringes' to show data distribution.
   geom_text(                  # Add text labels from above.
     aes(
-      x = valence,
-      y = energy,
-      label = label
+      x = acousticness,
+      y = instrumentalness,
+      label = label,
+      color = mode
     ),
     data = 
       tibble(
-        label = c("Altijd wel iemand", "ENERGY"),
-        category = c("Edisons", "Grammys"),
-        valence = c(0.090, 0.123),
-        energy = c(0.101, 0.967)
+        label = c("Kilmonger", "RAINY NIGHT IN TALLINN"),
+        category = c("(2017) Black Panther", "(2020) Tenet"),
+        acousticness = c(0.5230, 0.1090),
+        instrumentalness = c(0.932, 0.869000
+)
+      ),
+    colour = "black",         # Override colour (not mode here).
+    size = 2.5,                 # Override size (not loudness here).
+    hjust = "left",           # Align left side of label with the point.
+    vjust = "bottom",         # Align bottom of label with the point.
+    nudge_x = -0.05,          # Nudge the label slightly left.
+    nudge_y = 0.02            # Nudge the label slightly up.
+  ) +
+  facet_wrap(~category) +     # Separate charts per playlist.
+  scale_x_continuous(         # Fine-tune the x axis.
+    limits = c(0, 1),
+    breaks = c(0, 0.50, 1),   # Use grid-lines for quadrants only.
+    minor_breaks = NULL       # Remove 'minor' grid-lines.
+  ) +
+  scale_y_continuous(         # Fine-tune the y axis in the same way.
+    limits = c(0, 1),
+    breaks = c(0, 0.50, 1),
+    minor_breaks = NULL
+  ) +
+  scale_colour_brewer(        # Use the Color Brewer to choose a palette.
+    type = "qual",            # Qualitative set.
+    palette = "Set2"        # Name of the palette is 'Paired'.
+  ) +
+  scale_size_continuous(      # Fine-tune the sizes of each point.
+    trans = "exp",            # Use an exp transformation to emphasise loud.
+    guide = "none"            # Remove the legend for size.
+  ) +
+  theme_light() +             # Use a simpler theme.
+  labs(                       # Make the titles nice.
+    x = "Acousticness",
+    y = "Instrumentalness",
+    colour = "Mode"
+  ) +
+  theme_tufte(ticks = FALSE) 
+
+
+```
+
+
+```{r}
+ggplotly(scatter)
+```
+
+
+***
+Hi Welcome to my page! For this corpus I want to look at film composer and music producer Ludwig Goransson and see what changes he went trough, throughout his career. My focus is mainly on his film scores. It would be nice to see if i can find significant changes when looking at different scores. Also
+
+### Sci-fi or action?
+
+```{r}
+scatter2 <-genres %>%                    # Start with awards.
+  mutate(
+    mode = ifelse(mode == 0, "Minor", "Major")
+  ) %>%
+  ggplot(                     # Set up the plot.
+    aes(
+      x = acousticness,
+      y = instrumentalness,
+      size = loudness,
+      colour = mode
+    )
+  ) +
+  geom_point() +              # Scatter plot.
+  geom_rug(size = 0.1) +      # Add 'fringes' to show data distribution.
+  geom_text(                  # Add text labels from above.
+    aes(
+      x = acousticness,
+      y = instrumentalness,
+      label = label,
+      color = mode
+    ),
+    data = 
+      tibble(
+        label = c("", ""),
+        category = c("", ""),
+        acousticness = c(0.090, 0.123),
+        instrumentalness = c(0.101, 0.967)
       ),
     colour = "black",         # Override colour (not mode here).
     size = 3,                 # Override size (not loudness here).
@@ -166,7 +228,7 @@ scores %>%                    # Start with awards.
   ) +
   scale_colour_brewer(        # Use the Color Brewer to choose a palette.
     type = "qual",            # Qualitative set.
-    palette = "Paired"        # Name of the palette is 'Paired'.
+    palette = "Set1"        # Name of the palette is 'Paired'.
   ) +
   scale_size_continuous(      # Fine-tune the sizes of each point.
     trans = "exp",            # Use an exp transformation to emphasise loud.
@@ -174,23 +236,19 @@ scores %>%                    # Start with awards.
   ) +
   theme_light() +             # Use a simpler theme.
   labs(                       # Make the titles nice.
-    x = "Valence",
-    y = "Energy",
+    x = "Acousticness",
+    y = "Instrumentalness",
     colour = "Mode"
-  )
+  ) +
+  theme_tufte(ticks = FALSE) 
+
 
 ```
 
 
-
-
-
-***
-Hi Welcome to my page! For this corpus I want to look at film composer and music producer Ludwig Goransson and see what changes he went trough, throughout his career. My focus is mainly on his film scores. It would be nice to see if i can find significant changes when looking at different scores. Also
-
-### Frame 2
-
-
+```{r}
+ggplotly(scatter2)
+```
 
 
 Details
