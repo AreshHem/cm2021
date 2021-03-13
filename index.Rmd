@@ -250,6 +250,9 @@ scatter2 <-genres %>%                    # Start with awards.
 ggplotly(scatter2)
 ```
 
+***
+
+Genres
 
 Details
 =========================================
