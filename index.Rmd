@@ -184,7 +184,7 @@ ggplotly(scatter)
 
 
 ***
-<h2>Hi there! </h2> For this reasearch I am going to look at film composer and music producer Ludwig Ludwig Göransson. In this chart you can see somehow what changes he went trough, from 2013 until 2020. I want to analyse some of his most popular tracks. What made them popular and is there a relation between different popular songs? As you can see Black Panther's has some really interesting findings. For example, "Kilmonger challange" has one of the highest loudness (as seen in the point size), and kilmonger has one of the highest instrumentalness value.  Another interesting finding is the song "Rainy night in Talin" from Tenet. This song has a really high acousticnes, high energy and a bpm of 130. 
+<h2>Hi there! </h2> For this reasearch I am going to look at film composer and music producer Ludwig Ludwig Göransson. In this chart you can see somehow what changes he went trough, from 2013 until 2020. I want to analyse some of his most popular tracks. What made them popular and is there a relation between different popular songs? As you can see Black Panther's has some really interesting findings. For example, "Kilmonger challenge" has one of the highest loudness (as seen in the point size), and "kilmonger" has one of the highest instrumentalness value.  Another interesting finding is the song "Rainy night in Talin" from Tenet. This song has a really high acousticness, high energy and a BPM of 130. 
 
 
 
