@@ -17,11 +17,11 @@ library(flexdashboard)
 library(tidyverse)
 library(spotifyr)
 library(compmus)
-library(magick)
 library(unix)
 library(plotly)
 library(RColorBrewer)
 library(ggthemes)
+library(viridis)
 
 
 ```
@@ -163,7 +163,12 @@ scatter <-scores %>%                    # Start with awards.
     y = "Instrumentalness",
     colour = "Mode"
   ) +
-  theme_tufte(ticks = FALSE) 
+  theme_calc() +
+  
+  scale_color_viridis(alpha = 1, begin = 0.6, end = 0.3, direction = 1,
+  discrete = TRUE, option = "viridis",
+)
+  
 
 
 ```
@@ -175,7 +180,20 @@ ggplotly(scatter)
 
 
 ***
-Hi Welcome to my page! For this corpus I want to look at film composer and music producer Ludwig Goransson and see what changes he went trough, throughout his career. My focus is mainly on his film scores. It would be nice to see if i can find significant changes when looking at different scores. Also
+<h2>Hi there! </h2> For this reasearch I am going to look at film composer and music producer Ludwig Ludwig Göransson. In this chart you can see somehow what changes he went trough, from 2013 until 2020. I want to analyse some of his most popular tracks. What made them popular and is there a relation between different popular songs? As you can see Black Panther's has some really interesting findings. For example, "Kilmonger challange" has one of the highest loudness (as seen in the point size), and kilmonger has one of the highest instrumentalness value.  Another interesting finding is the song "Rainy night in Talin" from Tenet. This song has a really high acousticnes, high energy and a bpm of 130. 
+
+
+
+// notitie
+
+Ik heb het idee van mijn portoflio nog niet helemaal uitgewerkt en hier geplaatst. Ik had in gedachte om nog eventueel het nummer "The Mandalorian" toe te voegen omdat dit zijn meest populaire nummer is. Verder is het duidelijk te zien (op de volgende storyboard) dat er verschillen zijn tussen verschillende genre's. Ik weet alleen nog niet of ik hier verder op in wil gaan, en hoe ik dit dan kan aantonen in de individuele track analyses. 
+
+
+
+
+
+
+on the next pages i want take a closer look at thes particular songs and how they different from other songs with lower values.
 
 ### Sci-fi or action?
 
@@ -192,8 +210,8 @@ scatter2 <-genres %>%                    # Start with awards.
       colour = category
     )
   ) +
-  geom_point() +              # Scatter plot.
-  geom_rug(size = 0.1) +      # Add 'fringes' to show data distribution.
+  geom_point(alpha = 9/10) +              # Scatter plot.
+  geom_rug(size = 0.5) +      # Add 'fringes' to show data distribution.
   geom_text(                  # Add text labels from above.
     aes(
       x = acousticness,
@@ -240,7 +258,10 @@ scatter2 <-genres %>%                    # Start with awards.
     y = "Instrumentalness",
     colour = "Genre"
   ) +
-  theme_tufte(ticks = FALSE) 
+  scale_color_viridis(alpha = 1, begin = 0.9, end = 0.05, direction = 1,
+  discrete = TRUE, option = "inferno",
+) + theme_calc()
+  
 
 
 ```
