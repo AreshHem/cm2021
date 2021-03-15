@@ -163,12 +163,16 @@ scatter <-scores %>%                    # Start with awards.
     y = "Instrumentalness",
     colour = "Mode"
   ) +
+<<<<<<< HEAD
   theme_calc() +
   
   scale_color_viridis(alpha = 1, begin = 0.6, end = 0.3, direction = 1,
   discrete = TRUE, option = "viridis",
 )
   
+=======
+  theme_calc()  
+>>>>>>> 536138f9aac96e10d6cc8c94015fc06588ef59ab
 
 
 ```
@@ -258,10 +262,14 @@ scatter2 <-genres %>%                    # Start with awards.
     y = "Instrumentalness",
     colour = "Genre"
   ) +
+<<<<<<< HEAD
   scale_color_viridis(alpha = 1, begin = 0.9, end = 0.05, direction = 1,
   discrete = TRUE, option = "inferno",
 ) + theme_calc()
   
+=======
+  theme_calc(base_family = "Liberation Serif")
+>>>>>>> 536138f9aac96e10d6cc8c94015fc06588ef59ab
 
 
 ```
