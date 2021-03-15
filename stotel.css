@@ -2,3 +2,7 @@ img{
      max-width:68px;
      max-height:68px;
 }
+
+body{
+  font-family: Liberation Serif;
+}

@@ -163,7 +163,7 @@ scatter <-scores %>%                    # Start with awards.
     y = "Instrumentalness",
     colour = "Mode"
   ) +
-  theme_tufte(ticks = FALSE) 
+  theme_calc()  
 
 
 ```
@@ -240,7 +240,7 @@ scatter2 <-genres %>%                    # Start with awards.
     y = "Instrumentalness",
     colour = "Genre"
   ) +
-  theme_tufte(ticks = FALSE) 
+  theme_calc(base_family = "Liberation Serif")
 
 
 ```
