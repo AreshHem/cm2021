@@ -190,7 +190,7 @@ ggplotly(scatter)
 
 // notitie
 
-Ik heb het idee van mijn portoflio nog niet helemaal uitgewerkt en hier geplaatst. Ik had in gedachte om nog eventueel het nummer "The Mandalorian" toe te voegen omdat dit zijn meest populaire nummer is. Verder is het duidelijk te zien (op de volgende storyboard) dat er verschillen zijn tussen verschillende genre's. Ik weet alleen nog niet of ik hier verder op in wil gaan, en hoe ik dit dan kan aantonen in de individuele track analyses. 
+Ik heb het idee van mijn portoflio uitgewerkt in een word documment, maar nog niet in een duidelijke lijn. Ik had in gedachte om nog eventueel het nummer "The Mandalorian" toe te voegen omdat dit zijn meest populaire nummer is. Verder is het duidelijk te zien (op de volgende storyboard) dat er verschillen zijn tussen verschillende genre's. Ik weet alleen nog niet of ik hier verder op in wil gaan, en hoe ik dit dan kan aantonen in de individuele track analyses. Ik denk dat het voor mijn onderzoeksvraag het best is als ik mij richt op de poplariteit en bevindingen in deze chart. 
 
 
 
